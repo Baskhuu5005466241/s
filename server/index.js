@@ -84,11 +84,15 @@ const messageRoutes = require("./routes/messages");
 const socketIo = require("socket.io"); // Import socket.io
 require("dotenv").config();
 
+
 const app = express();
 const server = http.createServer(app); // Create HTTP server
 
 app.use(cors());
 app.use(express.json());
+app.get("/", (req, res) => {
+  res.write("Hello World!");
+})
 
 mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
